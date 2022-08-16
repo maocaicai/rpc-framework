@@ -30,6 +30,7 @@
     </properties>
     <modules>
         <module>rpc-framework-simple</module>
+        <module>rpc-framework-common</module>
     </modules>
     <dependencies>
         <!-- lombok -->
