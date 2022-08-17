@@ -33,14 +33,24 @@ public class ZKServiceDiscoveryImpl implements ServiceDiscovery {
          */
         this.loadBalance = ExtensionLoader.getExtensionLoader(LoadBalance.class).getExtension("loadBalance");
     }
+
+    /**
+     * 输入rpc请求，查找服务方法
+     * @param rpcRequest  rpc请求
+     * @return
+     */
     @Override
     public InetSocketAddress lookupService(RpcRequest rpcRequest) {
+        //获得服务器名
         String rpcServerName = rpcRequest.getRpcServiceName();
+        //获得zk客户端对象
         CuratorFramework zkClient = CuratorUtils.getZkClient();
+        //根据服务器名利用客户端获取服务器的子节点：即ip地址
         List<String> serviceUrlList = CuratorUtils.getChildrenNodes(zkClient, rpcServerName);
         if (CollectionUtils.isEmpty(serviceUrlList)) {
             throw new RpcException(RpcErrorMessageEnum.SERVICE_CAN_NOT_BE_FOUND, rpcServerName);
         }
+        //利用负载均衡策略选择子节点中的某个节点作为目标ip地址及端口
         String targetServiceUrl = loadBalance.selectServiceAddress(serviceUrlList, rpcRequest);
         log.info("成功发现服务IP地址：[{}]", targetServiceUrl);
         String[] socketAddressArray = targetServiceUrl.split(":");
