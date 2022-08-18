@@ -1,0 +1,1 @@
+loadBalance=github.maocaicai.loadBalance.loadBalancer.ConsistentHashLoadBalance

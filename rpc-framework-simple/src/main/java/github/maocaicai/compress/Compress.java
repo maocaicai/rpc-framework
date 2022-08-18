@@ -1,6 +1,6 @@
 package github.maocaicai.compress;
 
-import github.maocaicai.extention.SPI;
+import github.maocaicai.extension.SPI;
 
 /**
  * @author maocaicai

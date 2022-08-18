@@ -1,5 +1,7 @@
 package github.maocaicai.registry;
 
+import github.maocaicai.extension.SPI;
+
 import java.net.InetSocketAddress;
 
 /**
@@ -7,6 +9,7 @@ import java.net.InetSocketAddress;
  * @author maocaicai
  * since 2022/8/17 10:33
  */
+@SPI
 public interface ServiceRegistry {
 
     /**

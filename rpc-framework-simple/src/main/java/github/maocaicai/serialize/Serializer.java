@@ -1,6 +1,6 @@
 package github.maocaicai.serialize;
 
-import github.maocaicai.extention.SPI;
+import github.maocaicai.extension.SPI;
 
 /**
  * 序列化接口，所有序列化类都要实现此接口

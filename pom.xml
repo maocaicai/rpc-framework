@@ -30,6 +30,9 @@
     </properties>
     <modules>
         <module>rpc-framework-simple</module>
+        <module>hello-service-api</module>
+        <module>example-client</module>
+        <module>example-server</module>
         <module>rpc-framework-common</module>
     </modules>
     <dependencies>

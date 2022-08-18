@@ -28,7 +28,7 @@ public class RpcRequest {
     private String group;
 
     public String getRpcServiceName() {
-        return this.getInterfaceName() + this.getGroup();
+        return this.getInterfaceName() + this.getGroup() + this.getVersion();
     }
 
 }

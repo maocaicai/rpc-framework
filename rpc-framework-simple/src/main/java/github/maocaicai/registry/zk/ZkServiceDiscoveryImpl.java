@@ -2,7 +2,7 @@ package github.maocaicai.registry.zk;
 
 import github.maocaicai.enums.RpcErrorMessageEnum;
 import github.maocaicai.exception.RpcException;
-import github.maocaicai.extention.ExtensionLoader;
+import github.maocaicai.extension.ExtensionLoader;
 import github.maocaicai.loadBalance.LoadBalance;
 import github.maocaicai.registry.ServiceDiscovery;
 import github.maocaicai.registry.zk.util.CuratorUtils;
@@ -20,14 +20,14 @@ import java.util.List;
  * since 2022/8/16 20:32
  */
 @Slf4j
-public class ZKServiceDiscoveryImpl implements ServiceDiscovery {
+public class ZkServiceDiscoveryImpl implements ServiceDiscovery {
 
     /**
      * 实现查找IP地址策略接口
      */
     private final LoadBalance loadBalance;
 
-    public ZKServiceDiscoveryImpl() {
+    public ZkServiceDiscoveryImpl() {
         /**
          * ExtensionLoader:自适应扩展类，用于自动选择相应接口的实现类
          */

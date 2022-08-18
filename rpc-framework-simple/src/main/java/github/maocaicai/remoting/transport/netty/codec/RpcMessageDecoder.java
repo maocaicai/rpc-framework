@@ -3,7 +3,7 @@ package github.maocaicai.remoting.transport.netty.codec;
 import github.maocaicai.compress.Compress;
 import github.maocaicai.enums.CompressTypeEnum;
 import github.maocaicai.enums.SerializationTypeEnum;
-import github.maocaicai.extention.ExtensionLoader;
+import github.maocaicai.extension.ExtensionLoader;
 import github.maocaicai.remoting.constants.RpcConstants;
 import github.maocaicai.remoting.dto.RpcMessage;
 import github.maocaicai.remoting.dto.RpcRequest;
@@ -14,7 +14,6 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import lombok.extern.slf4j.Slf4j;
 
-import java.nio.ByteOrder;
 import java.util.Arrays;
 
 /**

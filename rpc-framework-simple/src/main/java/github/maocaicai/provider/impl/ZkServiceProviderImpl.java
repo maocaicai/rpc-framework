@@ -4,7 +4,7 @@ package github.maocaicai.provider.impl;
 import github.maocaicai.config.RpcServiceConfig;
 import github.maocaicai.enums.RpcErrorMessageEnum;
 import github.maocaicai.exception.RpcException;
-import github.maocaicai.extention.ExtensionLoader;
+import github.maocaicai.extension.ExtensionLoader;
 import github.maocaicai.provider.ServiceProvider;
 import github.maocaicai.registry.ServiceRegistry;
 import github.maocaicai.remoting.transport.netty.server.NettyRpcServer;

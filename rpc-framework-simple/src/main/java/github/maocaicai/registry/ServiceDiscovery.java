@@ -1,6 +1,6 @@
 package github.maocaicai.registry;
 
-import github.maocaicai.extention.SPI;
+import github.maocaicai.extension.SPI;
 import github.maocaicai.remoting.dto.RpcRequest;
 
 import java.net.InetSocketAddress;

@@ -1,4 +1,4 @@
-package github.maocaicai.extention;
+package github.maocaicai.extension;
 
 import github.maocaicai.utils.StringUtil;
 import lombok.extern.slf4j.Slf4j;

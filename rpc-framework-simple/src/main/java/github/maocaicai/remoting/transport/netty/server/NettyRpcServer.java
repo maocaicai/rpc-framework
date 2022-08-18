@@ -4,6 +4,7 @@ import github.maocaicai.config.CustomShutdownHook;
 import github.maocaicai.config.RpcServiceConfig;
 import github.maocaicai.factory.SingletonFactory;
 import github.maocaicai.provider.ServiceProvider;
+import github.maocaicai.provider.impl.ZkServiceProviderImpl;
 import github.maocaicai.remoting.transport.netty.codec.RpcMessageDecoder;
 import github.maocaicai.remoting.transport.netty.codec.RpcMessageEncoder;
 import github.maocaicai.utils.RuntimeUtil;
@@ -37,7 +38,7 @@ public final class NettyRpcServer {
     /**
      * 服务提供类
      */
-    private final ServiceProvider serviceProvider = SingletonFactory.getInstance(ServiceProvider.class);
+    private final ServiceProvider serviceProvider = SingletonFactory.getInstance(ZkServiceProviderImpl.class);
 
     /**
      * netty服务器注册相关服务器配置

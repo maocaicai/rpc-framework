@@ -1,4 +1,4 @@
-package github.maocaicai.extention;
+package github.maocaicai.extension;
 
 import java.lang.annotation.*;
 

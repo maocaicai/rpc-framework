@@ -11,7 +11,7 @@ import java.net.InetSocketAddress;
  * @author maocaicai
  * since 2022/8/17 10:35
  */
-public class ZKServiceRegistryImpl implements ServiceRegistry {
+public class ZkServiceRegistryImpl implements ServiceRegistry {
     @Override
     public void registerService(String rpcServerName, InetSocketAddress inetSocketAddress) {
         String servicePath = CuratorUtils.ZK_REGISTER_ROOT_PATH + "/" + rpcServerName + inetSocketAddress;

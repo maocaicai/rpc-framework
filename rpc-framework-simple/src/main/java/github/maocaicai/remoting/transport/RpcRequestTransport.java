@@ -1,7 +1,7 @@
 package github.maocaicai.remoting.transport;
 
 
-import github.maocaicai.extention.SPI;
+import github.maocaicai.extension.SPI;
 import github.maocaicai.remoting.dto.RpcRequest;
 
 /**
@@ -15,5 +15,5 @@ public interface RpcRequestTransport {
      * @param rpcRequest 消息请求
      * @return 服务器响应
      */
-    Object senRpcRequset(RpcRequest rpcRequest);
+    Object sendRpcRequest(RpcRequest rpcRequest);
 }

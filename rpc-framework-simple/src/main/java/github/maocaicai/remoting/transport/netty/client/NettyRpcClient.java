@@ -2,7 +2,7 @@ package github.maocaicai.remoting.transport.netty.client;
 
 import github.maocaicai.enums.CompressTypeEnum;
 import github.maocaicai.enums.SerializationTypeEnum;
-import github.maocaicai.extention.ExtensionLoader;
+import github.maocaicai.extension.ExtensionLoader;
 import github.maocaicai.factory.SingletonFactory;
 import github.maocaicai.registry.ServiceDiscovery;
 import github.maocaicai.remoting.constants.RpcConstants;
@@ -94,7 +94,7 @@ public class NettyRpcClient implements RpcRequestTransport {
      * @return 返回服务器响应
      */
     @Override
-    public Object senRpcRequset(RpcRequest rpcRequest) {
+    public Object sendRpcRequest(RpcRequest rpcRequest) {
         /**
          * 构建返回的结果，即响应体
          */
@@ -104,7 +104,7 @@ public class NettyRpcClient implements RpcRequestTransport {
         if (channel.isActive()) {
             unprocessedRequests.put(rpcRequest.getRequestId(), resultFuture);
             RpcMessage rpcMessage = RpcMessage.builder().data(rpcRequest)
-                    .codec(SerializationTypeEnum.HESSIAN.getCode())
+                    .codec(SerializationTypeEnum.KYRO.getCode())
                     .compress(CompressTypeEnum.GZIP.getCode())
                     .messageType(RpcConstants.REQUEST_TYPE).build();
             /**
