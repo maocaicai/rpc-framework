@@ -35,6 +35,13 @@ public class SpringBeanPostProcessor implements BeanPostProcessor {
         this.rpcClient = ExtensionLoader.getExtensionLoader(RpcRequestTransport.class).getExtension("netty");
     }
 
+    /**
+     * 重写before方法，在初始化前通过获得有注解的类及注解中的信息，在zookeeper中发布服务
+     * @param bean
+     * @param beanName
+     * @return
+     * @throws BeansException
+     */
     @SneakyThrows
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
@@ -47,17 +54,30 @@ public class SpringBeanPostProcessor implements BeanPostProcessor {
                     .group(rpcService.group())
                     .version(rpcService.version())
                     .service(bean).build();
+            /**
+             * 发布服务到zookeeper
+             */
             serviceProvider.publishService(rpcServiceConfig);
         }
         return bean;
     }
 
+    /**
+     * 重写After类，在初始化后获取存在RpcReference注解的类及注解中的信息，根据此通过反射创建客户端代理类
+     * @param bean
+     * @param beanName
+     * @return
+     * @throws BeansException
+     */
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         Class<?> targetClass = bean.getClass();
         Field[] declaredFields = targetClass.getDeclaredFields();
         for (Field declaredField : declaredFields) {
             RpcReference rpcReference = declaredField.getAnnotation(RpcReference.class);
+            /**
+             * 获取存在RpcReference注解的类，然后将注解中标注的版本和组号设置进RpcServiceConfig
+             */
             if (rpcReference != null) {
                 RpcServiceConfig rpcServiceConfig = RpcServiceConfig.builder()
                         .group(rpcReference.group())
@@ -69,6 +89,9 @@ public class SpringBeanPostProcessor implements BeanPostProcessor {
                 Object clientProxy = rpcClientProxy.getProxy(declaredField.getType());
                 declaredField.setAccessible(true);
                 try {
+                    /**
+                     * 这一步相当于创建了客户端代理类，把该类赋值到了bean里
+                     */
                     declaredField.set(bean, clientProxy);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
