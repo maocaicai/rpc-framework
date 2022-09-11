@@ -1,0 +1,3 @@
+kyro=github.maocaicai.serialize.kyro.KryoSerializer
+protostuff=github.maocaicai.serialize.protostuff.ProtostuffSerializer
+hessian=github.maocaicai.serialize.hessian.HessianSerializer
